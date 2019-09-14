@@ -2,6 +2,13 @@
 
 Database provided by Google Cloud SQL.
 
+## Development usage
+
+```
+docker-compose build
+docker-compose up
+```
+
 ## Creation
 
 This sort of app can be created completely on Docker:

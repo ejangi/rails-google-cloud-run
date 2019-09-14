@@ -1,0 +1,15 @@
+steps:
+
+# Build and tag the image.
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Build
+  args: [ 'builds', 'submit', '--tag', 'gcr.io/cloud-run-test/rails-google-cloud-run' ]
+  env:
+    - 'RAILS_ENV=${_RAILS_ENV}'
+
+# Deploy
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Deploy
+  args: [ 'beta', 'run', 'deploy', '--image', 'gcr.io/cloud-run-test/rails-google-cloud-run' ]
+  env:
+    - 'RAILS_ENV=${_RAILS_ENV}'
