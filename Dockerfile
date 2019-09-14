@@ -1,0 +1,19 @@
+FROM ruby:2.6
+
+RUN gem install bundler --version "2.0.2"
+
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install --no-install-recommends -y ca-certificates nodejs \
+    libicu-dev imagemagick unzip qt5-default libqt5webkit5-dev \
+    gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x \
+    xvfb xauth --fix-missing
+
+RUN apt -y remove cmdtest && \
+    curl -o- -L https://yarnpkg.com/install.sh | bash
+
+
+WORKDIR /usr/src/app
+ADD . /usr/src/app/
+RUN bundle install
+
+CMD rm -f /usr/src/app/tmp/pids/server.pid && bundle exec rake db:setup_or_migrate && bundle exec rails s -p 3000 -b '0.0.0.0'
