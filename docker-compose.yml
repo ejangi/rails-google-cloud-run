@@ -8,6 +8,7 @@ services:
     ports:
       - 3000:3000
     environment:
+      PORT: 3000
       RACK_ENV: development
       RAILS_ENV: development
       APP_DATABASE_HOST: db

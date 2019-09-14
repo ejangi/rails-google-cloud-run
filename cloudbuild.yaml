@@ -17,3 +17,6 @@ steps:
   args: [ 'beta', 'run', 'deploy', 'rails-google-cloud-run', '--image', 'gcr.io/cloud-run-test-252822/rails-google-cloud-run:$REVISION_ID', '--platform', 'managed', '--region', '${_REGION}' ]
   env:
     - 'RAILS_ENV=${_RAILS_ENV}'
+    - 'APP_DATABASE_HOST=${_APP_DATABASE_HOST}'
+    - 'APP_DATABASE_USER=${_APP_DATABASE_USER}'
+    - 'APP_DATABASE_PASSWORD=${_APP_DATABASE_PASSWORD}'
