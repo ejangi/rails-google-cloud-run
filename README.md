@@ -9,6 +9,13 @@ docker-compose build
 docker-compose up
 ```
 
+## Deploy to production
+
+1. Go to Cloud Build settings and make sure the service account has Cloud Run is enabled.
+2. Enable Cloud Resource Manager API.
+3. Connect Cloud Build trigger to github repo and set the _REGION and _RAILS_ENV substitution variables.
+4. Push to your github repo
+
 ## Creation
 
 This sort of app can be created completely on Docker:
