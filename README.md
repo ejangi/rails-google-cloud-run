@@ -15,7 +15,12 @@ docker-compose up
 2. Enable Cloud Run API.
 3. Enable Cloud Resource Manager API.
 4. Enable the SQL Admin API.
-4. Connect Cloud Build trigger to github repo and set the _REGION and _RAILS_ENV substitution variables.
+4. Connect Cloud Build trigger to github repo and set the following substitution variables: 
+    - _REGION 
+    - _RAILS_ENV
+    - _APP_DATABASE_HOST
+    - _APP_DATABASE_USER
+    - _APP_DATABASE_PASSWORD
 5. Push to your github repo
 
 ## Creation
@@ -29,3 +34,4 @@ This sort of app can be created completely on Docker:
 5. `cd .. && rails new app`
 6. `bundle exec rake webpacker:install`
 7. `yarn install --check-files`
+8. Set production credentials: `EDITOR=vim rails credentials:edit --environment production`

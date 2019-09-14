@@ -11,6 +11,6 @@ if [ -f /usr/src/app/tmp/pids/server.pid ]; then
     rm -f /usr/src/app/tmp/pids/server.pid
 fi
 
-bundle exec rake db:setup_or_migrate
+SECRET_KEY_BASE=`bin/rake secret` bundle exec rake db:setup_or_migrate
 
 exec "$@"
