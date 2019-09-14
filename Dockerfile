@@ -12,8 +12,9 @@ RUN apt -y remove cmdtest && \
     curl -o- -L https://yarnpkg.com/install.sh | bash
 
 WORKDIR /usr/src/app
-ADD . /usr/src/app/
+COPY . /usr/src/app/
 
+ENV BUNDLE_FROZEN=true
 RUN bundle install
 
 ENTRYPOINT [ "./docker-entrypoint.sh" ]

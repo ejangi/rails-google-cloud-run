@@ -10,6 +10,6 @@ steps:
 # Deploy
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Deploy
-  args: [ 'beta', 'run', 'deploy', '--image', 'gcr.io/cloud-run-test/rails-google-cloud-run' ]
+  args: [ 'beta', 'run', 'deploy', '--image', 'gcr.io/cloud-run-test/rails-google-cloud-run', '--platform', 'managed', '--region', '${_REGION}' ]
   env:
     - 'RAILS_ENV=${_RAILS_ENV}'
