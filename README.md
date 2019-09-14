@@ -21,6 +21,7 @@ docker-compose up
     - _APP_DATABASE_HOST
     - _APP_DATABASE_USER
     - _APP_DATABASE_PASSWORD
+    - _SECRET_KEY_BASE
 5. Push to your github repo
 
 ## Creation
