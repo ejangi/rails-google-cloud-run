@@ -17,5 +17,7 @@ COPY . /usr/src/app/
 ENV BUNDLE_FROZEN=true
 RUN bundle install
 
+ENV PORT=3000
+
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
-CMD bundle exec rails s -p 3000 -b '0.0.0.0'
+CMD bundle exec rails s -p ${PORT} -b '0.0.0.0'
