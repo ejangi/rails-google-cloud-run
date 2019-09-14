@@ -3,17 +3,17 @@ steps:
 # Build and tag the image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
-  args: [ 'build', '-t', 'gcr.io/cloud-run-test/rails-google-cloud-run:$REVISION_ID', '.' ]
+  args: [ 'build', '-t', 'gcr.io/cloud-run-test-252822/rails-google-cloud-run:$REVISION_ID', '.' ]
   env:
     - 'RAILS_ENV=${_RAILS_ENV}'
 
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
-  args: ['push', 'gcr.io/cloud-run-test/rails-google-cloud-run:$REVISION_ID']
+  args: ['push', 'gcr.io/cloud-run-test-252822/rails-google-cloud-run:$REVISION_ID']
 
 # Deploy
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Deploy
-  args: [ 'beta', 'run', 'deploy', 'rails-google-cloud-run', '--image', 'gcr.io/cloud-run-test/rails-google-cloud-run:$REVISION_ID', '--platform', 'managed', '--region', '${_REGION}' ]
+  args: [ 'beta', 'run', 'deploy', 'rails-google-cloud-run', '--image', 'gcr.io/cloud-run-test-252822/rails-google-cloud-run:$REVISION_ID', '--platform', 'managed', '--region', '${_REGION}' ]
   env:
     - 'RAILS_ENV=${_RAILS_ENV}'
