@@ -14,6 +14,7 @@ docker-compose up
 1. Go to Cloud Build settings and make sure the service account has Cloud Run is enabled.
 2. Enable Cloud Run API.
 3. Enable Cloud Resource Manager API.
+4. Enable the SQL Admin API.
 4. Connect Cloud Build trigger to github repo and set the _REGION and _RAILS_ENV substitution variables.
 5. Push to your github repo
 
