@@ -10,6 +10,12 @@ fi
 
 if [ ! -f /usr/src/app/config/production.key ]; then
     echo "config/production.key does not exist"
+    if [ -n "$_RAILS_MASTER_KEY" ]; then \
+        echo "Creating production.key:"
+        echo "$_RAILS_MASTER_KEY" > config/production.key; \
+    elif
+        echo "_RAILS_MASTER_KEY is NOT set."
+    fi
 fi
 
 bundle exec rake db:setup_or_migrate
