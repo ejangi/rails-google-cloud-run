@@ -15,7 +15,7 @@ COPY . /usr/src/app/
 
 ENV BUNDLE_FROZEN=true
 RUN bundle install && \
-    if [ "$RAILS_ENV}" = "production" ]; then \
+    if [ "$RAILS_ENV" = "production" ]; then \
         if [ ! -f config/production.key ] && [ -n "$_RAILS_MASTER_KEY" ]; then \
             echo "$_RAILS_MASTER_KEY" > config/production.key; \
         fi && \
