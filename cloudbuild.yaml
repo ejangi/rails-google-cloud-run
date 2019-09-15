@@ -3,18 +3,18 @@ steps:
 # Build and tag the image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$REVISION_ID', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/rails-google-cloud-run:$REVISION_ID', '.' ]
   env:
     - 'RAILS_ENV=${_RAILS_ENV}'
 
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
-  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME:$REVISION_ID']
+  args: ['push', 'gcr.io/$PROJECT_ID/rails-google-cloud-run:$REVISION_ID']
 
 # Deploy
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Deploy
-  args: [ 'beta', 'run', 'deploy', '$REPO_NAME', '--image', 'gcr.io/$PROJECT_ID/$PROJECT_ID:$REVISION_ID', '--platform', 'managed', '--region', '${_REGION}', '--add-cloudsql-instances', '${_SQL_INSTANCE}' ]
+  args: [ 'beta', 'run', 'deploy', 'rails-google-cloud-run', '--image', 'gcr.io/$PROJECT_ID/rails-google-cloud-run:$REVISION_ID', '--platform', 'managed', '--region', '${_REGION}', '--add-cloudsql-instances', '${_SQL_INSTANCE}' ]
   env:
     - 'RAILS_ENV=${_RAILS_ENV}'
     - 'APP_DATABASE_HOST=${_APP_DATABASE_HOST}'
