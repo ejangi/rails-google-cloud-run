@@ -8,11 +8,11 @@ if [ -f /usr/src/app/tmp/pids/server.pid ]; then
     rm -f /usr/src/app/tmp/pids/server.pid
 fi
 
-if [ ! -f /usr/src/app/config/production.key ]; then
-    echo "config/production.key does not exist"
-    if [ -n "$_RAILS_MASTER_KEY" ]; then \
+if [ ! -f /usr/src/app/config/credentials/production.key ]; then
+    echo "config/credentials/production.key does not exist"
+    if [ -n "$_RAILS_MASTER_KEY" ]; then
         echo "Creating production.key:"
-        echo "$_RAILS_MASTER_KEY" > config/production.key; \
+        echo "$_RAILS_MASTER_KEY" > /usr/src/app/config/credentials/production.key
     else
         echo "_RAILS_MASTER_KEY is NOT set."
     fi

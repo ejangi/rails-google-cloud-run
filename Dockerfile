@@ -16,8 +16,8 @@ COPY . /usr/src/app/
 ENV BUNDLE_FROZEN=true
 RUN bundle install && \
     if [ "$RAILS_ENV" = "production" ]; then \
-        if [ ! -f config/production.key ] && [ -n "$_RAILS_MASTER_KEY" ]; then \
-            echo "$_RAILS_MASTER_KEY" > config/production.key; \
+        if [ ! -f config/credentials/production.key ] && [ -n "$_RAILS_MASTER_KEY" ]; then \
+            echo "$_RAILS_MASTER_KEY" > config/credentials/production.key; \
         fi && \
         bundle exec rake assets:precompile; \
     fi
