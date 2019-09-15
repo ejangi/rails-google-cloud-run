@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-echo "Connecting on port: ${PORT}"
+echo "Connecting on port: ${PORT}\n"
+echo "RAILS_ENV: ${RAILS_ENV}"
 
 # if [ $RAILS_ENV = "production" ]; then 
 #     bundle exec rake assets:precompile
