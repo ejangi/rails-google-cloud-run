@@ -9,28 +9,28 @@ services:
       - 3000:3000
     environment:
       PORT: 3000
-      RACK_ENV: development
-      RAILS_ENV: development
-      APP_DATABASE_HOST: db
-      APP_DATABASE_USER: root
-      APP_DATABASE_PASSWORD: 3x4mpl3p4S5w3Rd
-    depends_on:
-      - db
-    networks:
-      - db-tier
-    links:
-      - db:db
+      RACK_ENV: production
+      RAILS_ENV: production
+      APP_DATABASE_HOST: 35.197.180.65
+      APP_DATABASE_USER: test_app
+      APP_DATABASE_PASSWORD: b4U4cYbEYpWmNnycAKXTUSKg
+#     depends_on:
+#       - db
+#     networks:
+#       - db-tier
+#     links:
+#       - db:db
 
-  db:
-    image: mariadb:latest
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_DATABASE: app_development
-      MYSQL_ROOT_PASSWORD: 3x4mpl3p4S5w3Rd
-    networks:
-      - db-tier
+#   db:
+#     image: mariadb:latest
+#     ports:
+#       - 3306:3306
+#     environment:
+#       MYSQL_DATABASE: app_development
+#       MYSQL_ROOT_PASSWORD: 3x4mpl3p4S5w3Rd
+#     networks:
+#       - db-tier
 
-networks:
-  db-tier:
-    driver: bridge
+# networks:
+#   db-tier:
+#     driver: bridge
