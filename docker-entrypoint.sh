@@ -8,8 +8,8 @@ if [ -f /usr/src/app/tmp/pids/server.pid ]; then
     rm -f /usr/src/app/tmp/pids/server.pid
 fi
 
-if [ ! -f /usr/src/app/config/master.key ]; then
-    echo "config/master.key does not exist"
+if [ ! -f /usr/src/app/config/production.key ]; then
+    echo "config/production.key does not exist"
 fi
 
 bundle exec rake db:setup_or_migrate
