@@ -21,7 +21,7 @@ docker-compose up
     - _APP_DATABASE_HOST
     - _APP_DATABASE_USER
     - _APP_DATABASE_PASSWORD
-    - _SECRET_KEY_BASE
+    - _RAILS_MASTER_KEY
 5. Push to your github repo
 
 ## Creation
@@ -35,5 +35,5 @@ This sort of app can be created completely on Docker:
 5. `cd .. && rails new app`
 6. `bundle exec rake webpacker:install`
 7. `yarn install --check-files`
-8. Create config/credentials/production.yml with contents: secret_key_base: <%= ENV['SECRET_KEY_BASE'] %>
 9. In config/environments/production.rb set `config.require_master_key = false`
+10. Set production secret_key_base: `RAILS_ENV=prodution EDITOR=vim rails credentials:edit --environment production`
