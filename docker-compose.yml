@@ -9,8 +9,8 @@ services:
       - 3000:3000
     environment:
       PORT: 3000
-      RACK_ENV: production
-      RAILS_ENV: production
+      RACK_ENV: development
+      RAILS_ENV: development
       APP_DATABASE_HOST: db
       APP_DATABASE_USER: root
       APP_DATABASE_PASSWORD: 3x4mpl3p4S5w3Rd

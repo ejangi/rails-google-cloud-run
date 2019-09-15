@@ -35,5 +35,6 @@ This sort of app can be created completely on Docker:
 5. `cd .. && rails new app`
 6. `bundle exec rake webpacker:install`
 7. `yarn install --check-files`
-9. In config/environments/production.rb set `config.require_master_key = false`
-10. Set production secret_key_base: `RAILS_ENV=prodution EDITOR=vim rails credentials:edit --environment production`
+8. Set production secret_key_base: `RAILS_ENV=prodution EDITOR=vim rails credentials:edit --environment production`
+9. `rails generate controller Home index`
+10. Add `root 'home#index` to routes.rb
