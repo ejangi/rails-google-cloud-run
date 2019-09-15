@@ -13,6 +13,7 @@ if [ ! -f /usr/src/app/config/credentials/production.key ]; then
     if [ -n "$_RAILS_MASTER_KEY" ]; then
         echo "Creating production.key:"
         echo "$_RAILS_MASTER_KEY" > /usr/src/app/config/credentials/production.key
+        cat /usr/src/app/config/credentials/production.key
     else
         echo "_RAILS_MASTER_KEY is NOT set."
     fi
