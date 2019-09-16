@@ -14,6 +14,9 @@ else
     echo "RAILS_MASTER_KEY is NOT set."
 fi
 
+# Output full env to logs
+/usr/bin/env
+
 bundle exec rake db:setup_or_migrate
 
 exec "$@"
