@@ -17,7 +17,6 @@ COPY . /usr/src/app/
 ENV PORT=8080
 ENV BUNDLE_FROZEN=true
 ENV RAILS_ENV=development
-ENV RAILS_MASTER_KEY=
 ENV RAILS_LOG_TO_STDOUT=1
 
 RUN yarn install && \
