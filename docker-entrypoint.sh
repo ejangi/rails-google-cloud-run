@@ -8,15 +8,10 @@ if [ -f /usr/src/app/tmp/pids/server.pid ]; then
     rm -f /usr/src/app/tmp/pids/server.pid
 fi
 
-if [ ! -f /usr/src/app/config/credentials/production.key ]; then
-    echo "config/credentials/production.key does not exist"
-    if [ -n "$_RAILS_MASTER_KEY" ]; then
-        echo "Creating production.key:"
-        echo "$_RAILS_MASTER_KEY" > /usr/src/app/config/credentials/production.key
-        cat /usr/src/app/config/credentials/production.key
-    else
-        echo "_RAILS_MASTER_KEY is NOT set."
-    fi
+if [ -n $RAILS_MASTER_KEY ]; then
+    echo "RAILS_MASTER_KEY is set."
+else
+    echo "RAILS_MASTER_KEY is NOT set."
 fi
 
 bundle exec rake db:setup_or_migrate

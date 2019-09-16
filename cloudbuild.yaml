@@ -19,4 +19,11 @@ steps:
 # Deploy
 - name: 'gcr.io/cloud-builders/gcloud'
   id: Deploy
-  args: [ 'app', 'deploy', '--image-url', 'gcr.io/$PROJECT_ID/rails-google-cloud-run:$REVISION_ID' ]
+  args: [ 'beta', 'run', 'deploy', 'rails-google-cloud-run', '--image', 'gcr.io/$PROJECT_ID/rails-google-cloud-run:$REVISION_ID', '--platform', 'managed', '--region', '${_REGION}', '--add-cloudsql-instances', '${_SQL_INSTANCE}' ]
+  env:
+    - 'RAILS_ENV=${_RAILS_ENV}'
+    - 'APP_DATABASE_HOST=${_APP_DATABASE_HOST}'
+    - 'APP_DATABASE_USER=${_APP_DATABASE_USER}'
+    - 'APP_DATABASE_PASSWORD=${_APP_DATABASE_PASSWORD}'
+    - 'RAILS_MASTER_KEY=${_RAILS_MASTER_KEY}'
+    - 'RAILS_LOG_TO_STDOUT=1'
