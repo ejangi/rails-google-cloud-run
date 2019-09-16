@@ -1,0 +1,5 @@
+runtime: custom
+env: standard
+beta_settings:
+  cloud_sql_instances: cloud-run-test-252822:australia-southeast1:cloud-run-sql
+env_variables:
