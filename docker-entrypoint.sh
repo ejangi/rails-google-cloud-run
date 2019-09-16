@@ -8,7 +8,7 @@ if [ -f /usr/src/app/tmp/pids/server.pid ]; then
     rm -f /usr/src/app/tmp/pids/server.pid
 fi
 
-if [ -n "$RAILS_MASTER_KEY" ] && [ ! -z "$RAILS_MASTER_KEY" ]; then
+if [ -n "$RAILS_MASTER_KEY" ]; then
     echo "RAILS_MASTER_KEY is set."
 else
     echo "RAILS_MASTER_KEY is NOT set."
