@@ -1,5 +1,12 @@
 FROM ruby:2.6.4
 
+ARG RAILS_ENV=development
+ARG RAILS_MASTER_KEY=
+
+ENV PORT=8080
+ENV BUNDLE_FROZEN=true
+ENV RAILS_LOG_TO_STDOUT=1
+
 RUN gem install bundler --version "2.0.2"
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -14,18 +21,17 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
 
-ENV PORT=8080
-ENV BUNDLE_FROZEN=true
-ENV RAILS_ENV=development
-ENV RAILS_MASTER_KEY=
-ENV RAILS_LOG_TO_STDOUT=1
-
 RUN yarn install && \
     bundle install && \
     bundle exec rails webpacker:check_yarn && \
-    if [ "$RAILS_ENV" = "production" ]; then \
-        bundle exec rake assets:precompile; \
+    echo "RAILS_ENV=$RAILS_ENV" && \
+    echo "RAILS_MASTER_KEY=$RAILS_MASTER_KEY" && \
+    if [ $RAILS_ENV = "production" ]; then \
+        RAILS_ENV=production bundle exec rake assets:precompile; \
     fi
+
+ENV RAILS_ENV=development
+ENV RAILS_MASTER_KEY=
 
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
 CMD bundle exec rails s -p ${PORT} -b '0.0.0.0'
