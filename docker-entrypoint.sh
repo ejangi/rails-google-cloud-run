@@ -10,6 +10,7 @@ fi
 
 if [ -n "$RAILS_MASTER_KEY" ]; then
     echo "RAILS_MASTER_KEY is set."
+    echo $RAILS_MASTER_KEY
 elif [ -n "$_RAILS_MASTER_KEY" ]; then
     export RAILS_MASTER_KEY="$_RAILS_MASTER_KEY"
     echo "Set RAILS_MASTER_KEY."
