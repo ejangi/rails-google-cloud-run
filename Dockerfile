@@ -28,4 +28,4 @@ RUN yarn install && \
     fi
 
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
-CMD bundle exec rackup -p ${PORT} —-host '0.0.0.0'
+CMD bundle exec rails s -p ${PORT} -b '0.0.0.0'
