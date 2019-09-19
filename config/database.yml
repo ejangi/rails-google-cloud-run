@@ -8,13 +8,13 @@ default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  host: <%= Rails.application.credentials.db[:host] %>
   username: <%= Rails.application.credentials.db[:user] %>
   password: <%= Rails.application.credentials.db[:pass] %>
 
 development:
   <<: *default
   database: app_development
+  host: <%= Rails.application.credentials.db[:host] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,3 +26,4 @@ test:
 production:
   <<: *default
   database: app_production
+  socket: /cloudsql/<%= ENV.fetch("_SQL_INSTANCE") %>
