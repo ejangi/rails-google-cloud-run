@@ -10,13 +10,14 @@ fi
 
 if [ -n "$RAILS_MASTER_KEY" ]; then
     echo "RAILS_MASTER_KEY is set."
-    echo $RAILS_MASTER_KEY
 elif [ -n "$_RAILS_MASTER_KEY" ]; then
     export RAILS_MASTER_KEY="$_RAILS_MASTER_KEY"
     echo "Set RAILS_MASTER_KEY."
 else
     echo "RAILS_MASTER_KEY is NOT set."
 fi
+
+echo $RAILS_MASTER_KEY
 
 bundle exec rake db:setup_or_migrate
 
