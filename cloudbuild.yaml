@@ -3,7 +3,7 @@ steps:
 # Build and tag the image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/rails-google-cloud-run:$REVISION_ID', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/rails-google-cloud-run:$REVISION_ID', '.', '--build-arg', 'RAILS_ENV=${_RAILS_ENV}', '--build-arg', 'RAILS_MASTER_KEY=${_RAILS_MASTER_KEY}' ]
   env:
     - 'RAILS_ENV=${_RAILS_ENV}'
     - 'RAILS_MASTER_KEY=${_RAILS_MASTER_KEY}'

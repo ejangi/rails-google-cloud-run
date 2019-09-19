@@ -1,7 +1,7 @@
 FROM ruby:2.6.4
 
-ARG _RAILS_ENV=development
-ARG _RAILS_MASTER_KEY=
+ARG RAILS_ENV=development
+ARG RAILS_MASTER_KEY=
 
 ENV PORT=8080
 ENV BUNDLE_FROZEN=true
@@ -24,9 +24,9 @@ COPY . /usr/src/app/
 RUN yarn install && \
     bundle install && \
     bundle exec rails webpacker:check_yarn && \
-    echo "_RAILS_ENV=$_RAILS_ENV" && \
-    echo "_RAILS_MASTER_KEY=$_RAILS_MASTER_KEY" && \
-    if [ $_RAILS_ENV = "production" ]; then \
+    echo "RAILS_ENV=$RAILS_ENV" && \
+    echo "RAILS_MASTER_KEY=$RAILS_MASTER_KEY" && \
+    if [ $RAILS_ENV = "production" ]; then \
         RAILS_ENV=production bundle exec rake assets:precompile; \
     fi
 
