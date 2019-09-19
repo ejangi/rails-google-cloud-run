@@ -8,9 +8,9 @@ default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  host: <%= ENV['APP_DATABASE_HOST'] %>
-  username: <%= ENV['APP_DATABASE_USER'] %>
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  host: <%= Rails.application.credentials.db[:host] %>
+  username: <%= Rails.application.credentials.db[:user] %>
+  password: <%= Rails.application.credentials.db[:pass] %>
 
 development:
   <<: *default

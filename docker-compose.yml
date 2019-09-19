@@ -7,14 +7,14 @@ services:
       - .:/usr/src/app
     ports:
       - 3000:3000
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     environment:
       PORT: 3000
+      EDITOR: vi
       RACK_ENV: development
       RAILS_ENV: development
-      APP_DATABASE_HOST: db
-      APP_DATABASE_USER: root
-      APP_DATABASE_PASSWORD: 3x4mpl3p4S5w3Rd
       RAILS_LOG_TO_STDOUT: 1
+      RAILS_MASTER_KEY: <secret key here>
     depends_on:
       - db
     networks:
