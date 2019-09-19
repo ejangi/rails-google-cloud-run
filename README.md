@@ -4,6 +4,8 @@ Database provided by Google Cloud SQL.
 
 ## Development usage
 
+Edit the `docker-compose.yml` file to include the `RAILS_MASTER_KEY` environment variable (they are different between development and production).
+
 ```
 docker-compose build
 docker-compose up
@@ -18,9 +20,6 @@ docker-compose up
 4. Connect Cloud Build trigger to github repo and set the following substitution variables: 
     - _REGION 
     - _RAILS_ENV
-    - _APP_DATABASE_HOST
-    - _APP_DATABASE_USER
-    - _APP_DATABASE_PASSWORD
     - _RAILS_MASTER_KEY
 5. Push to your github repo
 
@@ -35,6 +34,6 @@ This sort of app can be created completely on Docker:
 5. `cd .. && rails new app`
 6. `bundle exec rake webpacker:install`
 7. `yarn install --check-files`
-8. Set production secret_key_base: `RAILS_ENV=prodution EDITOR=vim rails credentials:edit --environment production`
+8. Set production secret_key_base: `rails credentials:edit --environment production`
 9. `rails generate controller Home index`
 10. Add `root 'home#index` to routes.rb

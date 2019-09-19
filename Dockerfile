@@ -9,7 +9,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     apt-get install --no-install-recommends -y ca-certificates nodejs \
     libicu-dev imagemagick unzip qt5-default libqt5webkit5-dev \
     gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x \
-    xvfb xauth yarn --fix-missing
+    xvfb xauth yarn vim --fix-missing
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
@@ -28,4 +28,4 @@ RUN yarn install && \
     fi
 
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
-CMD bundle exec rackup -p ${PORT} —host '0.0.0.0'
+CMD bundle exec rackup -p ${PORT} —-host '0.0.0.0'
