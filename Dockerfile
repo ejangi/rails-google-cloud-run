@@ -21,12 +21,8 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
 
-RUN node -v && \
-    yarn install && \
+RUN yarn install && \
     bundle install && \
-    bundle exec rails webpacker:check_yarn && \
-    echo "RAILS_ENV=$RAILS_ENV" && \
-    echo "RAILS_MASTER_KEY=$RAILS_MASTER_KEY" && \
     if [ $RAILS_ENV = "production" ]; then \
         RAILS_ENV=production bundle exec rake assets:precompile; \
     fi
