@@ -21,7 +21,8 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
 
-RUN yarn install && \
+RUN node -v && \
+    yarn install && \
     bundle install && \
     bundle exec rails webpacker:check_yarn && \
     echo "RAILS_ENV=$RAILS_ENV" && \
